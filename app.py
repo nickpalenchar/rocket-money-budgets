@@ -13,11 +13,7 @@ def main(args):
     args = parser.parse_args()
 
     if args.command == 'report':
-        print('oing')
-        print(args.argv)
         budgets.report.main(args.argv)
-    print(args)
-    print(args.argv)
 
 if __name__ == '__main__':
     main(sys.argv)
