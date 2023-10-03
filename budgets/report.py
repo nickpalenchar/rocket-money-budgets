@@ -10,6 +10,9 @@ from collections import defaultdict
 from pprint import pprint
 from .config import config
 
+
+BUDGET_LIMIT = sum([500 + 525 + 615 + 300 + 225 + 120 + 300])
+
 BUDGET_CATEGORIES = [
         'Coffee',
         'Entertainment & Rec',
@@ -22,10 +25,12 @@ BUDGET_CATEGORIES = [
         ]
 
 # total for all the budget categories
-BUDGET_LIMIT = 500 + 525 + 615 + 300 + 225 + 120 + 300 
 
 CARYOVER_CATEGORIES = [
+        # Trips, Vacations, some special transportations
         'Travel & Vacation',
+
+        # Extra spending which can be pulled from vacation
         'Discretionary',
         ]
 
@@ -66,10 +71,12 @@ def main(args):
             print(f'{category}: {amount}')
 
         budget_spent = BUDGET_LIMIT - budget_totals
-        print(f'RAW TOTAL: {raw_total}')
-        print(f'BUDGET TOTAL: {budget_totals}')
-        print(f'CARYOVER TOTAL: {caryover_totals}')
+        print(f'RAW TOTAL (all spending): {raw_total}')
+        print(f'BUDGET TOTAL (monthly total budget): {budget_totals}/{BUDGET_LIMIT}.00')
+        print(f'CARYOVER TOTAL (spent in carryover categories): {caryover_totals}')
         print(f'REMANING BUDGET: {budget_spent}')
+
+        return caryover_totals
 
 if __name__ == '__main__':
     main(sys.argv[0])
