@@ -67,8 +67,10 @@ def main(args):
                 caryover_totals += amount
 
         
+        print('## TOTALS IN EACH ##')
         for category, amount in categories.items():
             print(f'{category}: {amount}')
+        print()
 
         budget_spent = BUDGET_LIMIT - budget_totals
         print(f'RAW TOTAL (all spending): {raw_total}')
